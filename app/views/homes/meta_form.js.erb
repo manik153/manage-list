@@ -1,0 +1,14 @@
+$('#form-content').val('');
+$('#form').modal('hide');
+<% case @meta_form_type %>
+	<% when 'create_list' %>
+		$('#active-list').append('<%= j render 'list', list: @list %>');
+  <% when 'edit_list' %>
+    $('*[data-list="<%= @list_id %>"]').find('.content:first').text('<%= @content %>');
+	<% when 'create_list_item' %>
+		$('*[data-list="<%= @list_id %>"]').append('<%= j render 'list_item', item: @list_item %>');
+  <% when 'edit_list_item' %>
+    $('*[data-list-item="<%= @list_id %>"]').find('.content').text('<%= @content %>');
+<% end %>
+
+init();

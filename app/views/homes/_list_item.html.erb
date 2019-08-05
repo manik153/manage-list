@@ -1,0 +1,22 @@
+<% type ||= 'active' %>
+<li class="list-group-item list-group-item-dark" data-list-item='<%= item.id %>'>
+	<span class='content'><%= item.content %></span>
+	<div class="float-right">
+		<% if type == 'trashed' %>
+			<% unless item.list.is_trash %>
+				<span class="blue pointer-cursor restore-list-item">
+					<i class="fa fa-repeat" aria-hidden="true"></i>
+				</span>
+				&nbsp;|&nbsp;
+			<% end %>
+		<% else %>
+			<span class="pointer-cursor" data-toggle="modal" data-target="#form" onclick="$('#form-type').val('edit_list_item');$('#form-id').val('<%= item.id %>');">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+			</span>			
+			&nbsp;|&nbsp;
+		<% end %>
+		<span class="red pointer-cursor trash-list-item">
+			<i class="fa fa-trash" aria-hidden="true"></i>
+		</span>			
+	</div>		
+</li>

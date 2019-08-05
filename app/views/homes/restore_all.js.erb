@@ -1,0 +1,5 @@
+$('.nav-link')[0].click();
+$('#active-list').html('<%= j render 'content', lists: @active %>')
+$('#trashed-list').html('')
+
+init();

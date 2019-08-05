@@ -1,0 +1,11 @@
+<% type ||= 'active' %>
+<% lists.each do |list| %>
+	<%= render 'list', list: list, type: type %>
+<% end %>
+<% if type == 'trashed' %>
+<ul class="list-group other-trashed full-width">
+	<% @trashed_items.each do |item| %>
+	  <%= render 'list_item', item: item, type: type %>
+	<% end %>
+</ul>
+<% end %>

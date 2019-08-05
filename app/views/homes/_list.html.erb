@@ -1,0 +1,35 @@
+<% type ||= 'active' %>
+<br/>
+<ul class="list-group full-width" data-list='<%= list.id %>'>
+	<li class="list-group-item">
+		<span class='content'><%= list.content %></span>
+		<div class="float-right">
+			<% if type == 'trashed' %>
+				<span class="blue pointer-cursor restore-list">
+					<i class="fa fa-repeat" aria-hidden="true"></i>
+				</span>
+			<% else %>
+				<span class="blue pointer-cursor" data-toggle="modal" data-target="#form" onclick="$('#form-type').val('create_list_item');$('#form-id').val('<%= list.id %>');">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+				</span>
+				&nbsp;|&nbsp;
+				<span class="pointer-cursor" data-toggle="modal" data-target="#form" onclick="$('#form-type').val('edit_list');$('#form-id').val('<%= list.id %>');">
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+				</span>
+			<% end %>		
+			&nbsp;|&nbsp;
+			<span class="red pointer-cursor trash-list">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+			</span>			
+		</div>
+	</li>
+	<% if list.is_trash %>
+		<% list.list_items.each do |item| %>
+			<%= render 'list_item', item: item, type: type %>
+		<% end %>
+	<% else %>
+		<% list.list_items.active.each do |item| %>
+			<%= render 'list_item', item: item, type: type %>
+		<% end %>
+	<% end %>
+</ul>

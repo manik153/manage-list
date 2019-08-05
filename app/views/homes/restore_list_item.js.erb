@@ -1,0 +1,4 @@
+$('*[data-list-item="<%= @trashed_id %>"]').remove();
+$('#active-list').html('<%= j render 'content', lists: @active %>')
+
+init();

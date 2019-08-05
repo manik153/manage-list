@@ -1,0 +1,43 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#active" role="tab" data-toggle="tab">List</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#trashed" role="tab" data-toggle="tab">Trashed</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active show" id="active">
+		<button type="button" class="btn btn-info full-width float-right" data-toggle="modal" data-target="#form" onclick="$('#form-type').val('create_list')">
+		  <i class="fa fa-plus" aria-hidden="true"></i> Create List
+		</button>
+		<div id="active-list">
+	  	<%= render 'content', lists: @active, type: 'active' %>			
+		</div>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="trashed">
+		<button type="button" class="btn btn-danger full-width float-right" id="restore-button">
+		  <i class="fa fa-repeat" aria-hidden="true"></i> Restore All
+		</button>
+		<div id="trashed-list">
+  		<%= render 'content', lists: @trashed, type: 'trashed' %>
+		</div>
+  </div>
+</div>
+
+<div class="modal" id="form">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="modal-body">
+      	<input type="hidden" name="type" id="form-type">
+        <input type="hidden" name="list_id" id="form-id">
+        <input type="text" name="content" id="form-content">
+        <button type="button" class="btn btn-info" id="form-submit">Submit</button>
+        <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
