@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_08_05_105312) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "list_items", force: :cascade do |t|
     t.text "content"
     t.boolean "is_trash", default: false
     t.integer "order", default: 1
-    t.integer "list_id"
+    t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_list_items_on_list_id"
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 2019_08_05_105312) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "list_items", "lists"
 end
