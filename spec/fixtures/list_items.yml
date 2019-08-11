@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
+  id: 1
+  content: 'Test List Item 1'
   is_trash: false
   order: 1
-  list: one
+  list_id: 1
 
 two:
-  content: MyText
-  is_trash: false
+  id: 2
+  content: 'Test List Item 2'
+  is_trash: true
   order: 1
-  list: two
+  list_id: 2
